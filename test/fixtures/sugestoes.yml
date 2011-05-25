@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  usuario_id: 1
+  titulo: MyString
+  texto: MyText
+  status: 1
+  dtenvio: 2011-05-24
+  dtaceito: 2011-05-24
+  dtpublicado: 2011-05-24
+  dtpromovido: 2011-05-24
+
+two:
+  usuario_id: 1
+  titulo: MyString
+  texto: MyText
+  status: 1
+  dtenvio: 2011-05-24
+  dtaceito: 2011-05-24
+  dtpublicado: 2011-05-24
+  dtpromovido: 2011-05-24

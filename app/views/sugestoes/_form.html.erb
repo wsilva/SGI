@@ -1,0 +1,49 @@
+<%= form_for(@sugestao) do |f| %>
+  <% if @sugestao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sugestao.errors.count, "error") %> prohibited this sugestao from being saved:</h2>
+
+      <ul>
+      <% @sugestao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :usuario_id %><br />
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :texto %><br />
+    <%= f.text_area :texto %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :dtenvio %><br />
+    <%= f.date_select :dtenvio %>
+  </div>
+  <div class="field">
+    <%= f.label :dtaceito %><br />
+    <%= f.date_select :dtaceito %>
+  </div>
+  <div class="field">
+    <%= f.label :dtpublicado %><br />
+    <%= f.date_select :dtpublicado %>
+  </div>
+  <div class="field">
+    <%= f.label :dtpromovido %><br />
+    <%= f.date_select :dtpromovido %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @sugestao.usuario_id %>
+</p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @sugestao.titulo %>
+</p>
+
+<p>
+  <b>Texto:</b>
+  <%= @sugestao.texto %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @sugestao.status %>
+</p>
+
+<p>
+  <b>Dtenvio:</b>
+  <%= @sugestao.dtenvio %>
+</p>
+
+<p>
+  <b>Dtaceito:</b>
+  <%= @sugestao.dtaceito %>
+</p>
+
+<p>
+  <b>Dtpublicado:</b>
+  <%= @sugestao.dtpublicado %>
+</p>
+
+<p>
+  <b>Dtpromovido:</b>
+  <%= @sugestao.dtpromovido %>
+</p>
+
+
+<%= link_to 'Edit', edit_sugestao_path(@sugestao) %> |
+<%= link_to 'Back', sugestoes_path %>
