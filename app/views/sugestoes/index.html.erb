@@ -1,37 +1,11 @@
-<h1>Listing sugestoes</h1>
+<section id="articles">
+  <% @sugestoes.each do |sugestao| %>
+  <article class="article">
+    <div class="title"><%= link_to sugestao.titulo %></div>
+    <div class="byline"><%= sugestao.created_at.strftime("%d/%m/%Y %Hh%I") %></div>
+  </article>
+  <% end %>
+  
+</section>
 
-<table>
-  <tr>
-    <th>Usuario</th>
-    <th>Titulo</th>
-    <th>Texto</th>
-    <th>Status</th>
-    <th>Dtenvio</th>
-    <th>Dtaceito</th>
-    <th>Dtpublicado</th>
-    <th>Dtpromovido</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @sugestoes.each do |sugestao| %>
-  <tr>
-    <td><%= sugestao.usuario_id %></td>
-    <td><%= sugestao.titulo %></td>
-    <td><%= sugestao.texto %></td>
-    <td><%= sugestao.status %></td>
-    <td><%= sugestao.dtenvio %></td>
-    <td><%= sugestao.dtaceito %></td>
-    <td><%= sugestao.dtpublicado %></td>
-    <td><%= sugestao.dtpromovido %></td>
-    <td><%= link_to 'Show', sugestao %></td>
-    <td><%= link_to 'Edit', edit_sugestao_path(sugestao) %></td>
-    <td><%= link_to 'Destroy', sugestao, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Sugestao', new_sugestao_path %>
+<%= link_to 'Nova ideia', new_sugestao_path %>
