@@ -1,42 +1,96 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%#= content_for?(:title) ? yield(:title) : "SGI - Sistema de Gestão de Ideias e Sugestões" %>
+<%#= content_for?(:title) ? yield(:title) : "SGI - Sistema de Gestão de Ideias e Sugestões" %>
     <%= stylesheet_link_tag 'css3' %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div id="divwrapper">
-      
-      <header id="page_header">
-        <nav id="nav_user">
+
+    <header id="page_header">
+
+      <nav id="nav_user">
+        <ul>
+          <% if usuario_signed_in? %>
+            <li><span id="currentuser"><%= current_usuario.email %></span></li>
+            &nbsp;
+            <li><%= link_to "Meu Perfil", edit_usuario_registration_path %></li>
+            <li><%= link_to "Sair", destroy_usuario_session_path %></li>
+
+          <% else %> 
+            <li><%= link_to "Cadastrar", new_usuario_registration_path %></li> 
+            <li><%= link_to "Autenticar", new_usuario_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+
+      <div id="page_title">
+        <h1>SGI <span>Gestão de Ideias e Sugestões</span></h1>
+        <h2>has_many <span>:ideias</span>, <span>:sugestoes</span> => <span>:projetos</span></h3>  
+      </div>
+
+    </header>
+
+    <header id="nav_header">
+
+      <nav id="nav_main">
+        <ul>
+          <li>
+            <%=  link_to "Ideias", root_path %>
+          </li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <section id="maincontainer">
+
+      <section id="content">
+
+        <section id="flash">
+          <% flash.each do |key, value| %>
+            <div class="flash <%= key %>"><%= value %></div>
+          <% end %>
+        </section>
+
+        <%= yield %>
+
+      </section>
+
+      <section id="sidebar">
+
+        <section id="support" class="box">
+          <h3>SGI-Gerência de Ideias </h3>
+          <h4>Maneiras de contribuir com ideias:</h4>
           <ul>
-            <% if usuario_signed_in? %>
-              <li><span id="currentuser"><%= current_usuario.email %></span></li>
-              &nbsp;
-              <li><%= link_to "Meu Perfil", edit_usuario_registration_path %></li>
-              <li><%= link_to "Sair", destroy_usuario_session_path %></li>
-  
-            <% else %> 
-              <li><%= link_to "Cadastrar", new_usuario_registration_path %></li> 
-              <li><%= link_to "Autenticar", new_usuario_session_path %></li>
-            <% end %>
+            <li>Envie uma ideia</li>
+            <li>Interagir com ideias</li>
+            <li>Promover ideas</li>
           </ul>
-        </nav>
+        </section>
 
-        <div id="page_title">
-          <h1>SGI <span>Gestão de Ideias e Sugestões</span></h1>
-          <h2>has_many <span>:ideias</span>, <span>:sugestoes</span> => <span>:projetos</span></h3>  
-        </div>
-      </header>
+        <section id="links" class="box">
+          <h3>Links (escolhidos pelo editor)</h3>
+          <div><%= link_to "The official RailsGuides", "http://guides.rubyonrails.org" %></div>
+          <div><%= link_to "The official Rails API", "http://api.rubyonrails.org/" %></div>
+        </section>
 
-      <% flash.each do |name, msg| %>
-        <%= content_tag :section, msg, :id => "flash_#{name}" %>
-      <% end %>
+      </section>
+
+    </section>
     
-      <%= yield %>
-    </div>
-    
+    <footer id="page_footer"> 
+        <hr />
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
+        </a>
+        <br />
+        Todo o conteúdo sob a licensa: 
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+            Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+        </a>.
+    </footer>
+
   </body>
 </html>

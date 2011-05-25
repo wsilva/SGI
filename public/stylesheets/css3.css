@@ -9,7 +9,7 @@
 header, footer, section, aside, nav, article { display: block; }
 
 
-body { font-size: 14px; font-family: Helvetica, Arial, Verdana; background-color: #ffffff; padding: 10px;}
+body { font-size: 14px; font-family: Helvetica, Arial, Verdana; background-color: #ffffff;}
 
 h1 { font-size: 24px; }
 
@@ -37,20 +37,6 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #page_title h2 { font-size: 14px; font-weight: normal; color: #74809a; padding: 0 0; margin: 10px 0 10px 25px; border: none; }
 #page_title h2 span { color: #c81419; }
 #page_title img { margin-left: 40px;}
-
-#divwrapper
-{
-    width: 75%;
-    margin: 0 auto;
-    background-color: #FFF;
-    padding: 0px 40px;
-/*    border: solid 1px black;
-    margin-top: 20px;
-    border-right-color: #828282;
-    border-left-color: #828282;
-    border-bottom-color: #828282;
-    border-top-color: #828282;    */
-}
 
 #maincontainer { overflow: hidden; }
 
