@@ -7,35 +7,36 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <header id="page_header">
-      <nav id="nav_user">
-        <ul>
-          <% if usuario_signed_in? %>
-            <li><span id="currentuser"><%= current_usuario.email %></span></li>
-            &nbsp;
-            <li><%= link_to "Meu Perfil", edit_usuario_registration_path %></li>
-            <li><%= link_to "Sair", destroy_usuario_session_path %></li>
-          
-          <% else %> 
-              <li><%= link_to "Me Cadastrar", new_usuario_registration_path %></li> 
-              <li><%= link_to "Autenticar", new_usuario_session_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+    <div id="divwrapper">
       
-      <div id="page_title">
-        <h1>SGI <span>Gestão de Ideias e Sugestões</span></h1>
-        <h2>has_many <span>:ideias</span>, <span>:sugestoes</span> => <span>:projetos</span></h3>  
-      </div>
-    </header>
-    
+      <header id="page_header">
+        <nav id="nav_user">
+          <ul>
+            <% if usuario_signed_in? %>
+              <li><span id="currentuser"><%= current_usuario.email %></span></li>
+              &nbsp;
+              <li><%= link_to "Meu Perfil", edit_usuario_registration_path %></li>
+              <li><%= link_to "Sair", destroy_usuario_session_path %></li>
+  
+            <% else %> 
+              <li><%= link_to "Cadastrar", new_usuario_registration_path %></li> 
+              <li><%= link_to "Autenticar", new_usuario_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+
+        <div id="page_title">
+          <h1>SGI <span>Gestão de Ideias e Sugestões</span></h1>
+          <h2>has_many <span>:ideias</span>, <span>:sugestoes</span> => <span>:projetos</span></h3>  
+        </div>
+      </header>
+
       <% flash.each do |name, msg| %>
         <%= content_tag :section, msg, :id => "flash_#{name}" %>
       <% end %>
     
-    </section>
-    
       <%= yield %>
+    </div>
     
   </body>
 </html>
