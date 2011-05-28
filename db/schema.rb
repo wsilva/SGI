@@ -10,20 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525002343) do
+ActiveRecord::Schema.define(:version => 20110526215636) do
 
   create_table "sugestoes", :force => true do |t|
-    t.integer  "usuario_id"
-    t.string   "titulo"
-    t.text     "texto"
-    t.integer  "status"
-    t.date     "dtenvio"
-    t.date     "dtaceito"
+    t.integer  "usuario_id",                     :null => false
+    t.string   "titulo",                         :null => false
+    t.text     "texto",                          :null => false
+    t.integer  "status",          :default => 0, :null => false
+    t.string   "motivo_rejeicao"
+    t.integer  "visitas",         :default => 0, :null => false
+    t.integer  "positivos",       :default => 0, :null => false
+    t.integer  "negativos",       :default => 0, :null => false
     t.date     "dtpublicado"
     t.date     "dtpromovido"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "sugestoes", ["usuario_id"], :name => "index_sugestoes_on_usuario_id"
 
   create_table "usuarios", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -44,6 +48,10 @@ ActiveRecord::Schema.define(:version => 20110525002343) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
+    t.string   "nome"
+    t.date     "nascimento"
+    t.string   "site"
   end
 
   add_index "usuarios", ["confirmation_token"], :name => "index_usuarios_on_confirmation_token", :unique => true
