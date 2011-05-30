@@ -1,0 +1,60 @@
+<h2>Minhas Sugestões</h2>   
+    
+<p><%= link_to 'Nova ideia', new_sugestao_path, :class => "awesome custom red" %></p>
+
+<section id="myarticles">
+        
+    <% if !@minhassugestoes.empty? %>
+    
+        <% @minhassugestoes.each do |sugestao| %>
+    
+            <article class="myarticle">
+        
+                <div class="title"><%= sugestao.titulo %></div>
+                <div class="created">
+                    Criação / Última Alteração: <%= sugestao.created_at.strftime("%d/%m/%Y %Hh%I") %> / <%= sugestao.updated_at.strftime("%d/%m/%Y %Hh%I") %>
+                </div>
+                        
+                <!-- the status:  0...draft, 1...submitted, 2...rejected, 3...full article, 4...featured article -->                                
+                        
+                <% if sugestao.status == 0 %>     
+                  <div class="state">Status: Rascunho (visible via direct link)</div>
+                <% end%>
+            
+                <% if sugestao.status == 1 %>     
+                  <div class="state">Status: Enviado (<%= sugestao.created_at.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                <% end%>
+            
+                <% if sugestao.status == 2 %>     
+                  <div class="state">Status: Rejeitado (<%= sugestao.updated_at.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                  <div class="reject">Por favor leia o comentário, reveja sua sugestão e reenvie sua sugestão!</div>
+                  <div class="rejectmsg"><%= sugestao.motivo_rejeicao %></div>
+                <% end%>
+            
+                <% if sugestao.status == 3 %>
+                  <div class="state">Status: Aceito e publicado (<%= sugestao.dtpublicado.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                <% end %>
+                
+                <% if sugestao.status == 4 %>
+                  <div class="state">Status: Promovido (<%= sugestao.dtpromovido.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                <% end %>
+    
+                <div class="actions">
+                    <span class="show"><%= link_to 'Ver', sugestao, :class => "awesome custom red" %></span>
+                    <span class="edit"><%= link_to 'Alterar', edit_sugestao_path(sugestao), :class => "awesome custom red" %></span>
+                    <% if (sugestao.status == 0) or (sugestao.status == 2) %>
+                        <span><%= link_to "Enviar", "#", :class => "awesome custom red" %></span>
+                    <% end %>
+                    <% if sugestao.status < 3 %>
+                        <span class="delete"><%= link_to 'Remover', sugestao, :confirm => 'Tem certeza?', :method => :delete, :class => "awesome custom black" %></span>
+                    <% end %>
+                </div>
+                
+            </article>  
+        <% end %>
+
+    <% else %>
+        <p>Você ainda não envio ideias. Começe a contribuir: <%= link_to 'Nova Ideia', new_sugestao_path, :class => "awesome custom red" %> %></p>
+    <% end %>
+
+</section>

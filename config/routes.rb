@@ -1,7 +1,18 @@
 Sugestoes::Application.routes.draw do
   devise_for :usuarios
 
-  resources :sugestoes
+#  resources :sugestoes
+  resources :sugestoes do
+    collection do
+#      get 'sobre'
+#      get 'todas'
+      get 'minhassugestoes'
+    end
+    
+    member do
+      put 'submit'
+    end
+  end
 
 
 

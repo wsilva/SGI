@@ -11,39 +11,30 @@
     </div>
   <% end %>
 
+  <% # Title and Teaser can not be changed once an article has been accepted %>
+  <% if @sugestao.status < 3 %>
+    <div class="field">
+        <label for="sugestao_title">Título (Plaintext, 180 characters max)</label><br />
+        <%= f.text_field :titulo, :size => "100%", :class => "fullwidth"  %>
+    </div>      
+  <% else %>
+    <div class="field">
+        <label for="sugestao_title">Título (não pode ser alterado pois já foi aprovado)</label><br />
+        <%= f.text_field :titulo, :readonly => true,  :size => "100%", :class => "fullwidth"  %>
+    </div>
+  <% end %>
+
   <div class="field">
-    <%= f.label :usuario_id %><br />
-    <%= f.text_field :usuario_id %>
+    <label for="sugestao_texto">Texto (Textile: RedCloth with Coderay - <%= link_to "What is this?", '#' %>)</label><br />
+    <%= f.text_area :texto, :size => "100%x20", :class => "fullwidth"  %>
   </div>
-  <div class="field">
-    <%= f.label :titulo %><br />
-    <%= f.text_field :titulo %>
-  </div>
-  <div class="field">
-    <%= f.label :texto %><br />
-    <%= f.text_area :texto %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :dtenvio %><br />
-    <%= f.date_select :dtenvio %>
-  </div>
-  <div class="field">
-    <%= f.label :dtaceito %><br />
-    <%= f.date_select :dtaceito %>
-  </div>
-  <div class="field">
-    <%= f.label :dtpublicado %><br />
-    <%= f.date_select :dtpublicado %>
-  </div>
-  <div class="field">
-    <%= f.label :dtpromovido %><br />
-    <%= f.date_select :dtpromovido %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to 'Detalhes desta ideia', @sugestao, :class => "awesome custom black" %> | 
+    <%= link_to 'Voltar para as ideias', minhassugestoes_sugestoes_path, :class => "awesome custom black" %>
+    <br/>
+    <%= f.submit :class => "awesome custom red" %>
   </div>
+
+
 <% end %>
