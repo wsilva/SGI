@@ -80,6 +80,7 @@ class SugestoesController < ApplicationController
   # POST /sugestoes.xml
   def create
     @sugestao = Sugestao.new(params[:sugestao])
+    @sugestao.usuario = current_usuario
 
     respond_to do |format|
       if @sugestao.save
