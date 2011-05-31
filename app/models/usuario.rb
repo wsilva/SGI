@@ -12,4 +12,8 @@ class Usuario < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :username, :nome, :dtnascimento, :url
+  
+  validates :url, :url => {:allow_blank => true }
+  validates :dtnascimento, :date => {:allow_blank => true }
+  
 end
