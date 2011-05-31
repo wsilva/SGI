@@ -1,0 +1,50 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  usuario_id: 1
+  titulo: MyString
+  texto: MyText
+  status: 0
+
+two:
+  id: 2
+  usuario_id: 1
+  titulo: MyString
+  texto: MyText
+  status: 3
+  
+three:
+  id: 3
+  usuario_id: 2
+  titulo: MyString
+  texto: MyText
+  status: 0
+  
+four:
+  id: 4
+  usuario_id: 2
+  titulo: MyString
+  texto: MyText
+  status: 1
+  
+five:
+  id: 5
+  usuario_id: 2
+  titulo: MyString
+  texto: MyText
+  status: 2
+  
+six:
+  id: 6
+  usuario_id: 2
+  titulo: MyString
+  texto: MyText
+  status: 3 
+
+seven:
+  id: 7
+  usuario_id: 2
+  titulo: MyString
+  texto: MyText
+  status: 4

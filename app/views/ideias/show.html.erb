@@ -1,0 +1,69 @@
+<!--
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @ideia.usuario_id %>
+</p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @ideia.titulo %>
+</p>
+
+<p>
+  <b>Texto:</b>
+  <%= @ideia.texto %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @ideia.status %>
+</p>
+
+<p>
+  <b>Motivo rejeicao:</b>
+  <%= @ideia.motivo_rejeicao %>
+</p>
+
+<p>
+  <b>Visitas:</b>
+  <%= @ideia.visitas %>
+</p>
+
+<p>
+  <b>Positivos:</b>
+  <%= @ideia.positivos %>
+</p>
+
+<p>
+  <b>Negativos:</b>
+  <%= @ideia.negativos %>
+</p>
+
+<p>
+  <b>Dtpublicacao:</b>
+  <%= @ideia.dtpublicacao %>
+</p>
+
+<p>
+  <b>Dtrejeicao:</b>
+  <%= @ideia.dtrejeicao %>
+</p>
+
+<p>
+  <b>Dtpromocao:</b>
+  <%= @ideia.dtpromocao %>
+</p>
+
+
+<%= link_to 'Edit', edit_ideia_path(@ideia) %> |
+<%= link_to 'Back', ideias_path %>
+-->
+<section id="articlebody">
+    <h2><%= @ideia.titulo %></h2>
+
+    <div class="textile">
+        <%= @ideia.texto %>
+    </div>
+</section>

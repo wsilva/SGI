@@ -1,0 +1,38 @@
+<%= form_for(@ideia) do |f| %>
+  <% if @ideia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ideia.errors.count, "error") %> impediu(ram) essa ideia de ser gravada:</h2>
+
+      <ul>
+        <% @ideia.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% # titulo can not be changed once an ideia has been accepted %>
+  <% if @ideia.status < 3 %>
+    <div class="field">
+      <label for="ideia_titulo">Título (Plaintext, 80 characters max)</label><br />
+      <%= f.text_field :titulo, :size => "100%", :class => "fullwidth"  %>
+    </div>    
+  <% else %>
+    <div class="field">
+      <label for="ideia_titulo">Título (não pode ser alterado quando a ideia já foi publicada)</label><br />
+      <%= f.text_field :titulo, :readonly => true,  :size => "100%", :class => "fullwidth"  %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label for="ideia_texto">Sua ideia (Textile: RedCloth with Coderay - <%= link_to "O que é isso?", '#' %>)</label><br />
+    <%= f.text_area :texto, :size => "100%x40", :class => "fullwidth"  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "awesome custom red" %>
+    <%= link_to 'Ver', @ideia, :class => "awesome custom black" %>
+    <%= link_to 'Voltar para minhas ideias', minhasideias_ideias_path, :class => "awesome custom black" %>
+  </div>
+
+<% end %>

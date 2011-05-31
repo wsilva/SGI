@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Sugestoes::Application.config.secret_token = 'ae72c7e9e3805421330b2910892d6dccd7cfe0cd59f54ffea8c0b33e8f78e651907ea4d9c072fff4125f93386d6e1ed5fe5f4557997a9547ca2cc04931e39eb7'
+Sgi::Application.config.secret_token = '0b05a31fbfa8011549295f599fc6429d491de6f8d0bd4b8198731bb366274a00e51cd3303114cb7ed9101a6d7dda1d55f0dbbee5e0df78b28e76ef2a869d0d04'

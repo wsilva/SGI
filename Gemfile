@@ -32,5 +32,4 @@ gem 'pg'
 
 gem 'rake', '0.8.7'
 gem 'devise'
-#gem 'brI18n'
-#gem 'brazilian-rails'
+

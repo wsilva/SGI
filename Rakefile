@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Sugestoes::Application.load_tasks
+Sgi::Application.load_tasks

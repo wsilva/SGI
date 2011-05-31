@@ -1,4 +1,4 @@
-Sugestoes::Application.configure do
+Sgi::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -15,7 +15,7 @@ Sugestoes::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.default_url_options = { :host => 'localhost:3000'}
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = false
   # config.action_mailer.delivery_method = :test          # use this to NOT send emails in development mode
 
@@ -28,10 +28,7 @@ Sugestoes::Application.configure do
     :user_name            => 'w.f.silva@gmail.com',
     :password             => 'w9vc40TV',
     :authentication       => 'plain',
-    :enable_starttls_auto => true
-    
-  }
-
+    :enable_starttls_auto => true  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

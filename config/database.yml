@@ -11,7 +11,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: sugestoes_development
+  database: sgi_development
   pool: 5
   username: postgres
   password: 6f145tf
@@ -37,7 +37,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: sugestoes_test
+  database: sgi_test
   pool: 5
   username: postgres
   password: 6f145tf
@@ -45,7 +45,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: sugestoes_production
+  database: sgi_production
   pool: 5
   username: postgres
   password: 6f145tf

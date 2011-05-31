@@ -1,8 +1,7 @@
-class Sugestao < ActiveRecord::Base
-  
+class Ideia < ActiveRecord::Base
   belongs_to :usuario
   
-  attr_accessible :titulo, :texto, :status, :motivo_rejeicao
+  attr_accessible :titulo, :texto
   
   # 0...rascunho, 1...enviado, 2...rejeitado, 3...publicado, 4...promovido
   
@@ -11,7 +10,7 @@ class Sugestao < ActiveRecord::Base
   validates :texto, :presence => true, :length => { :maximum => 5000 }
   validates :status, :presence => true, :numericality => true, :inclusion => { :in => 0..4 }
   validates :motivo_rejeicao, :length => { :maximum => 5000 }  
-  validates :visitas, :numericality => true
-  validates :positivos, :numericality => true
-  validates :negativos, :numericality => true
+#  validates :visitas, :numericality => true
+#  validates :positivos, :numericality => true
+#  validates :negativos, :numericality => true
 end

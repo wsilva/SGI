@@ -1,20 +1,16 @@
-Sugestoes::Application.routes.draw do
+Sgi::Application.routes.draw do
   devise_for :usuarios
 
-#  resources :sugestoes
-  resources :sugestoes do
+  resources :ideias do
     collection do
-#      get 'sobre'
-#      get 'todas'
-      get 'minhassugestoes'
+      get 'about'
+      get 'all'
+      get 'minhasideias'
     end
-    
     member do
       put 'submit'
     end
   end
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -65,7 +61,7 @@ Sugestoes::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "sugestoes#index"
+  root :to => "ideias#index"
 
   # See how all your routes lay out with "rake routes"
 

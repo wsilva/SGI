@@ -9,3 +9,24 @@ one: {}
 #
 two: {}
 #  column: value
+
+usuario1: 
+  id: 91
+  email: usuario1@sgi.inet
+  encrypted_password: abcdef1
+  password_salt:  efvfvffdv
+  confirmed_at: <%= Time.now %>
+
+usuario2: 
+  id: 92
+  email: usuario2@sgi.inet
+  encrypted_password: abcdef2
+  password_salt:  hjujzjjzt
+  confirmed_at: <%= Time.now %>
+  
+usuario3: 
+  id: 93
+  email: usuario3@sgi.inet
+  encrypted_password: abcdef3
+  password_salt:  gheureuf
+  confirmed_at: 

@@ -1,0 +1,60 @@
+<h2>Gerencie suas ideias</h2>   
+    
+<p><%= link_to 'Começe enviando sua ideia', new_ideia_path, :class => "awesome custom red" %></p>
+
+<section id="myarticles">
+        
+    <% if !@minhasideias.empty? %>
+    
+        <% @minhasideias.each do |ideia| %>
+    
+            <article class="myarticle">
+        
+                <div class="title"><%= ideia.titulo %></div>
+                <div class="created">
+                    Criação / Última alteração: <%= ideia.created_at.strftime("%d/%m/%Y") %> / <%= ideia.updated_at.strftime("%d/%m/%Y") %>
+                </div>
+                        
+                <!-- the status:  0...rascunho, 1...enviado, 2...rejeitado, 3...aprovada/publicada, 4...promovida -->                                
+                        
+                <% if ideia.status == 0 %>     
+                  <div class="state">Status atual: Rascunho (visível por link direto)</div>
+                <% end%>
+            
+                <% if ideia.status == 1 %>     
+                  <div class="status">Status atual: Enviado (<%= ideia.updated_at.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                <% end%>
+            
+                <% if ideia.status == 2 %>     
+                  <div class="state">Status atual: Rejeitado (<%= ideia.dtrejeicao.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                  <div class="reject">Por favor leia o comentário, reveja sua ideia e envie novamente!</div>
+                  <div class="rejectmsg"><%= ideia.motivo_rejeicao %></div>
+                <% end%>
+            
+                <% if ideia.status == 3 %>
+                  <div class="state">Status atual: Aceito e publicado (<%= ideia.dtpublicacao.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                <% end %>
+                
+                <% if ideia.status == 4 %>
+                  <div class="state">Status atual: Ideia promovida (<%= ideia.dtpromocao.strftime("%d/%m/%Y %Hh%I") %>)</div>
+                <% end %>
+    
+                <div class="actions">
+                    <span class="show"><%= link_to 'Ver', ideia, :class => "awesome custom red" %></span>
+                    <span class="edit"><%= link_to 'Alterar', edit_ideia_path(ideia), :class => "awesome custom red" %></span>
+                    <% if (ideia.status == 0) or (ideia.status == 2) %>
+                        <span><%= link_to "Enviar agora", submit_ideia_path(ideia), :method => :put, :class => "awesome custom red" %></span>
+                    <% end %>
+                    <% if ideia.status < 3 %>
+                        <span class="delete"><%= link_to 'Remover', ideia, :confirm => 'Tem certeza?', :method => :delete, :class => "awesome custom black" %></span>
+                    <% end %>
+                </div>
+                
+            </article>  
+        <% end %>
+
+    <% else %>
+        <p>Você ainda não mandou ideias. Começe agora: <%= link_to 'Nova ideia', new_ideia_path, :class => "awesome custom red" %></p>
+    <% end %>
+
+</section>

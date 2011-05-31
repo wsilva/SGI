@@ -1,13 +1,13 @@
 class Usuario < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :timeoutable and :omniauthable
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, 
-         :confirmable, :lockable
+         :lockable
        
-  has_many :sugestoes
+  has_many :ideias, :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :username, :nome, :nascimento, :site
+    :username, :nome, :dtnascimento, :url
 end

@@ -15,7 +15,7 @@
           <% if usuario_signed_in? %>
             <li><span id="currentuser">Autenticado como <%= current_usuario.username %></li>
             <li><%= link_to "Seu perfil", edit_usuario_registration_path %></li>
-            <li><%= link_to "Suas ideias", minhassugestoes_sugestoes_path %></li>
+            <li><%= link_to "Suas ideias", minhasideias_ideias_path %></li>
             <li><%= link_to "Sair", destroy_usuario_session_path %></li>
 
           <% else %> 
@@ -37,7 +37,9 @@
       <nav id="nav_main">
         <ul>
           <li>
-            <%=  link_to "Ideias", root_path %>
+            <%=  link_to "Últimas Ideias", root_path %>
+            <%=  link_to "Todas Ideias", all_ideias_path %>
+            <%=  link_to "Sobre", about_ideias_path %>
           </li>
         </ul>
       </nav>

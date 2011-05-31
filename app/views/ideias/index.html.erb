@@ -1,0 +1,9 @@
+<h1>Ideias</h1>
+<section id = "articles">
+  <% @ideias.each do |ideia| %>
+    <article class="article">
+      <div class = "title"><%= link_to ideia.titulo, ideia %></div>
+      <div class = "byline"><%= ideia.created_at.strftime("%d/%m/%Y %Hh%I") %></div>
+    </article>  
+  <% end %>
+</section>
