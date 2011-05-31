@@ -4,13 +4,16 @@ Sgi::Application.routes.draw do
   resources :ideias do
     collection do
       get 'about'
-      get 'all'
+      get 'todas'
       get 'minhasideias'
     end
     member do
       put 'submit'
     end
   end
+  
+  resources :sugestoes, :only => [:create, :destroy] 
+ 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,69 +1,63 @@
-<!--
-<p id="notice"><%= notice %></p>
+<section id="articleheader">
+  <h2><%= @ideia.titulo %></h2>
+  <div class="byline">enviado por <%= link_to @ideia.usuario.nome, "" %></div>
 
-<p>
-  <b>Usuario:</b>
-  <%= @ideia.usuario_id %>
-</p>
+  <div class="avatar">
+    <%= image_tag gravatar(@ideia.usuario.email, 64) %>
+  </div>
 
-<p>
-  <b>Titulo:</b>
-  <%= @ideia.titulo %>
-</p>
-
-<p>
-  <b>Texto:</b>
-  <%= @ideia.texto %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @ideia.status %>
-</p>
-
-<p>
-  <b>Motivo rejeicao:</b>
-  <%= @ideia.motivo_rejeicao %>
-</p>
-
-<p>
-  <b>Visitas:</b>
-  <%= @ideia.visitas %>
-</p>
-
-<p>
-  <b>Positivos:</b>
-  <%= @ideia.positivos %>
-</p>
-
-<p>
-  <b>Negativos:</b>
-  <%= @ideia.negativos %>
-</p>
-
-<p>
-  <b>Dtpublicacao:</b>
-  <%= @ideia.dtpublicacao %>
-</p>
-
-<p>
-  <b>Dtrejeicao:</b>
-  <%= @ideia.dtrejeicao %>
-</p>
-
-<p>
-  <b>Dtpromocao:</b>
-  <%= @ideia.dtpromocao %>
-</p>
-
-
-<%= link_to 'Edit', edit_ideia_path(@ideia) %> |
-<%= link_to 'Back', ideias_path %>
--->
-<section id="articlebody">
-    <h2><%= @ideia.titulo %></h2>
-
-    <div class="textile">
-        <%= @ideia.texto %>
-    </div>
 </section>
+
+<section id="articlebody" class="textile">
+  <%= @ideia.texto %>
+</section>
+
+
+<% # sugestoes are available for published ideias only %>
+<% if @ideia.status > 2 %>
+  <section id="comments"> 
+    <% @sugestoes.each do |sugestao| %>
+      <article class="comment">      
+        <div class="avatar"><%= image_tag gravatar(sugestao.usuario.email, 48) %></div>
+        <div class="commentbody">
+          <div class="commenthead">               
+            <%= sugestao.usuario.nome %> - <%=time_ago_in_words(sugestao.created_at)%> atrás 
+            <% # display delete link only for sugestoes written by this particular usuario %>
+            <% if usuario_signed_in? and sugestao.usuario_id == current_usuario.id %>
+              <span><%= link_to 'remover', ideia_sugestao_path(@ideia, sugestao), :confirm => 'Tem certeza?', :method => :delete, :class => "" %></span>
+            <% end %> 
+          </div>
+          <div><%= sugestao.msg %></div>
+        </div>  
+      </article>
+    <% end %>
+
+    <% # add a new sugestao %>   
+    <article class="comment newcomment">            
+      <% if usuario_signed_in? %>
+        <div class="avatar"><%= image_tag gravatar(current_usuario.email, 48) %></div>
+        <div class="commentbody">
+          <% if current_usuario.nome == nil or current_usuario.nome == '' %>
+            <div class="commenthead">
+              Por favor complete seu <%= link_to "perfil", edit_usuario_registration_path %> antes de enviar sugestões.
+            </div>
+          <% else %>              
+            <div class="commenthead">
+              <%= current_usuario.nome %>
+            </div>
+            <div>
+              <%= form_for [@ideia, current_usuario.sugestoes.new] do |f| %>
+                <%= f.text_area :msg, :size => "100%x20", :class => "fullwidth" %>
+                <%= f.submit "Enviar sugestão", :class => "awesome custom red" %>
+              <% end %>               
+            </div>          
+          <% end %>
+        </div>  
+      <% else %>
+        <div class="signin">
+          Por favor <%= link_to "autentique", new_usuario_session_path %> antes de enviar uma sugestão.
+        </div>
+      <% end %>
+    </article>
+  </section>
+<% end %>

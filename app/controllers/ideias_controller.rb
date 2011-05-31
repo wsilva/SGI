@@ -2,7 +2,7 @@
 class IdeiasController < ApplicationController
   
   # only index and show are accessible for non-authenticated users
-  before_filter :authenticate_usuario!, :except => [:index, :show, :about, :all]
+  before_filter :authenticate_usuario!, :except => [:index, :show, :about, :todas]
   
   #recovering
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
@@ -28,7 +28,7 @@ class IdeiasController < ApplicationController
     end
   end
 
-  def all
+  def todas
     @ideia = Ideia.where(:status => ['3', '4'])  
     if @ideia.size < 1
       flash[:notice] = "Nenhuma ideia para listar com status 3 ou 4."
@@ -45,6 +45,7 @@ class IdeiasController < ApplicationController
   # GET /ideias/1.xml
   def show
     @ideia = Ideia.find(params[:id])
+    @sugestoes = @ideia.sugestoes.all
 
     respond_to do |format|
       format.html # show.html.erb

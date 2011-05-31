@@ -1,5 +1,6 @@
 class Ideia < ActiveRecord::Base
   belongs_to :usuario
+  has_many :sugestoes, :dependent => :destroy
   
   attr_accessible :titulo, :texto
   
