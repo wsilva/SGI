@@ -47,16 +47,20 @@
             </div>
             <div>
               <%= form_for [@ideia, current_usuario.sugestoes.new] do |f| %>
-                <%= f.text_area :msg, :size => "100%x20", :class => "fullwidth" %>
+                <%= f.text_area :msg, :size => "100%x7", :class => "fullwidth" %>
                 <%= f.submit "Enviar sugestão", :class => "awesome custom red" %>
-              <% end %>               
+              <% end %>                
             </div>          
           <% end %>
         </div>  
       <% else %>
-        <div class="signin">
-          Por favor <%= link_to "autentique", new_usuario_session_path %> antes de enviar uma sugestão.
-        </div>
+        <div class="commentbody">
+          <div class="signin">
+            <div class="commenthead">
+              Por favor <%= link_to "entre", new_usuario_session_path %> no sistema antes de enviar uma sugestão.              
+            </div>
+          </div>
+        </div>          
       <% end %>
     </article>
   </section>

@@ -9,14 +9,14 @@ class SugestoesController < ApplicationController
     @sugestao.usuario = current_usuario
 
     respond_to do |format|
-      if @ideia.state > 2
+      if @ideia.status > 2
         if @sugestao.save
           format.html { redirect_to(@ideia, :notice => 'Sugestão enviada com sucesso.') }
         else
           format.html { redirect_to(@ideia, :notice => 'Houve um erro ao gravar sua sugestão (sugestão vazia ou sugestão com texto muito longo).') }
         end
       else
-        format.html { redirect_to(@ideia, :notice => 'Sugestões são liitadas a ideias publicadas.') }
+        format.html { redirect_to(@ideia, :notice => 'Sugestões são limitadas a ideias publicadas.') }
       end  
     end
   end

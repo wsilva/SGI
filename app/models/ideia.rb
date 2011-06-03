@@ -2,7 +2,7 @@ class Ideia < ActiveRecord::Base
   belongs_to :usuario
   has_many :sugestoes, :dependent => :destroy
   
-  attr_accessible :titulo, :texto
+  attr_accessible :titulo, :texto, :status, :motivo_rejeicao, :visitas, :positivos, :negativos
   
   # 0...rascunho, 1...enviado, 2...rejeitado, 3...publicado, 4...promovido
   

@@ -10,9 +10,10 @@ Sgi::Application.routes.draw do
     member do
       put 'submit'
     end
+    
+    resources :sugestoes, :only => [:create, :destroy] 
   end
   
-  resources :sugestoes, :only => [:create, :destroy] 
  
 
   # The priority is based upon order of creation:
