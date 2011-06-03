@@ -1,0 +1,52 @@
+<h2>Seu perfil</h2>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </p>
+  
+  <p>
+    <%= f.label "Apelido" %><br />
+    <%= f.text_field :username %>
+  </p>
+  
+  <p>
+    <%= f.label "Site Pessoal" %><br />
+    <%= f.text_field :url %>
+  </p>
+  
+  <p>
+    <%= f.label "Data de nascimento" %><br />
+     <%= f.date_select :dtnascimento, :start_year => Time.now.year - 100, :end_year => Time.now.year  %>
+  </p>
+
+  <p>
+    <%= f.label "E-mail" %><span>(não é publicado)</span><br />
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label "Senha" %> <i>(Deixe em branco se não quiser alterar)</i><br />
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label "Confirmação de senha" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.label 'Senha atual' %> <i>(informe sua senha para confirmar as alterações)</i><br />
+    <%= f.password_field :current_password %>
+  </p>
+
+  <p><%= f.submit "Gravar" %></p>
+<% end %>
+
+<h3>Cancelar minha conta</h3>
+
+<p>Não gostou? <%= link_to "Cancelar minha conta", registration_path(resource_name), :confirm => "Tem certeza?", :method => :delete %>.</p>
+
+<%= link_to "Voltar", :back %>

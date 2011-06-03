@@ -11,6 +11,7 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'sugestao', 'sugestoes'
   inflect.irregular 'ideia', 'ideias'
+  inflect.irregular 'registro', 'registros'
 end
 
 

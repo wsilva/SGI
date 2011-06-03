@@ -1,5 +1,5 @@
 Sgi::Application.routes.draw do
-  devise_for :usuarios
+  devise_for :usuarios, :controllers => {:registrations => 'usuarios/registrations'}
 
   resources :ideias do
     collection do
