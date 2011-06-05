@@ -1,18 +1,46 @@
-<h2>Sign up</h2>
+<h2>Cadastrar</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <p>
+    <%= f.label "Nome" %><br />
+    <%= f.text_field :nome %>
+  </p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <p>
+    <%= f.label "Apelido" %><br />
+    <%= f.text_field :username %>
+  </p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <p>
+    <%= f.label "Site Pessoal" %><br />
+    <%= f.text_field :url %>
+  </p>
 
-  <p><%= f.submit "Sign up" %></p>
+  <p>
+    <%= f.label "Data de nascimento" %><br />
+    <%= f.date_select :dtnascimento, :start_year => Time.now.year - 100, :end_year => Time.now.year  %>
+  </p>
+
+  <p>
+    <%= f.label "E-Mail" %><br />
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label "Senha" %><br />
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label "Confirmação de senha" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.submit "Cadastrar" %>
+  </p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

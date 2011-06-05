@@ -6,20 +6,20 @@
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>
   </p>
-  
+
   <p>
     <%= f.label "Apelido" %><br />
     <%= f.text_field :username %>
   </p>
-  
+
   <p>
     <%= f.label "Site Pessoal" %><br />
     <%= f.text_field :url %>
   </p>
-  
+
   <p>
     <%= f.label "Data de nascimento" %><br />
-     <%= f.date_select :dtnascimento, :start_year => Time.now.year - 100, :end_year => Time.now.year  %>
+    <%= f.date_select :dtnascimento, :start_year => Time.now.year - 100, :end_year => Time.now.year  %>
   </p>
 
   <p>

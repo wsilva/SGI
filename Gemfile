@@ -32,4 +32,5 @@ gem 'pg'
 
 gem 'rake', '0.8.7'
 gem 'devise'
+gem 'omniauth', '0.1.6'
 
