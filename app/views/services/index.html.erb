@@ -1,0 +1,33 @@
+<section id="deviseauth">
+  <h2>Serviços de Autenticação - Configurando</h2>
+
+  <div id="currservices">
+    <h3><%= @services.count == 1 ? 'A seguinte conta está conectada' : 'As seguintes contas estão conectadas' %> com sua conta local do SGI:</h3>
+
+    <% @services.each do |service| %>  
+      <div class="services_used">  
+        <%= image_tag "#{service.provider}_64.png", :size => "64x64" %>
+        <div class = "user">
+          <div class="line1">Nome: <%= service.uname %> (ID: <%= service.uid %>)</div>  
+          <div class="line2">E-mail: <%= service.uemail != '' ? service.uemail : 'Não definido' %></div>
+          <div class="line3">
+            <% @services.count == 1 ? @msg = 'Removendo a última conta linkada pode você pode travar o acesso a sua conta se você não definiu seu e-mail e senha da sua conta local!' : @msg = '' %>
+            <%= link_to "Remover este serviço", service, :confirm => 'Tem certeza que quer remover este serviço de autenticação? ' + @msg, :method => :delete, :class => "remove" %>
+          </div>
+        </div>
+      </div>  
+    <% end %>
+  </div>
+
+  <div id="availableservices">
+    <h3>Você pode conectar mais serviços a sua conta:</h3>
+    <div id="services">
+      <a href="/auth/facebook" class="services"><%= image_tag "facebook_64.png", :size => "64x64",  :alt => "Facebook" %>Facebook</a>
+      <a href="/auth/google" class="services"><%= image_tag "google_64.png", :size => "64x64",  :alt => "Google" %>Google</a>
+      <a href="/auth/github" class="services"><%= image_tag "github_64.png", :size => "64x64",  :alt => "Github" %>Github</a>
+      <a href="/auth/twitter" class="services"><%= image_tag "twitter_64.png", :size => "64x64",  :alt => "Twitter" %>Twitter</a>
+    </div>
+    <h4>Se você entrou no SGI usando um serviço de autenticação uma senha aleatória foi definida para sua conta local. Você pode solicitar uma nova senha usando o link "Esqueceu sua senha?" na página de autenticação.</h4>
+  </div>
+  
+</section>

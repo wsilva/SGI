@@ -1,6 +1,8 @@
 Sgi::Application.routes.draw do
   devise_for :usuarios, :controllers => {:registrations => 'usuarios/registrations'}
 
+  match '/auth/:provider/callback' => 'services#create'
+  
   resources :ideias do
     collection do
       get 'about'
@@ -11,6 +13,7 @@ Sgi::Application.routes.draw do
       put 'submit'
     end
     
+    resources :services, :only => [:index, :create, :destroy]
     resources :sugestoes, :only => [:create, :destroy] 
   end
   
