@@ -28,23 +28,27 @@ class IdeiasController < ApplicationController
     end
   end
 
-  def todas
-    @ideia = Ideia.where(:status => ['3', '4'])  
-    if @ideia.size < 1
-      flash[:notice] = "Nenhuma ideia para listar com status 3 ou 4."
-      redirect_to root_url
-    else
-      respond_to do |format|
-        format.html { render 'index' } # uses the same view as the default index
-        format.xml  { render :xml => @ideia }
-      end
-    end
-  end
+#  def todas
+#    @ideia = Ideia.where(:status => ['3', '4'])  
+#    if @ideia.size < 1
+#      flash[:notice] = "Nenhuma ideia para listar com status 3 ou 4."
+#      redirect_to root_url
+#    else
+#      respond_to do |format|
+#        format.html { render 'index' } # uses the same view as the default index
+#        format.xml  { render :xml => @ideia }
+#      end
+#    end
+#  end
   
   # GET /ideias/1
   # GET /ideias/1.xml
   def show
     @ideia = Ideia.find(params[:id])
+    
+    # incrementando visitação
+    @ideia.visitas = @ideia.visitas + 1
+    @ideia.save
     @sugestoes = @ideia.sugestoes.all
 
     respond_to do |format|

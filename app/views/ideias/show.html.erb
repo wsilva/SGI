@@ -1,6 +1,9 @@
 <section id="articleheader">
   <h2><%= @ideia.titulo %></h2>
-  <div class="byline">enviado por <%= link_to @ideia.usuario.nome, "" %></div>
+  <div class="byline">
+    enviado por <%= link_to @ideia.usuario.nome, "" %> |
+        <%= @ideia.visitas == 1 ? "1 visita" : @ideia.visitas.to_s + " visitas" %>
+  </div>
 
   <div class="avatar">
     <%= image_tag gravatar(@ideia.usuario.email, 64) %>
