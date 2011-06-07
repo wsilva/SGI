@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110605023421) do
+ActiveRecord::Schema.define(:version => 20110607225548) do
+
+  create_table "avaliacoes", :force => true do |t|
+    t.integer  "usuario_id",  :null => false
+    t.integer  "sugestao_id", :null => false
+    t.integer  "pontos"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "avaliacoes", ["sugestao_id"], :name => "index_avaliacoes_on_sugestao_id"
 
   create_table "ideias", :force => true do |t|
     t.integer  "usuario_id",                     :null => false
