@@ -14,6 +14,7 @@ Sgi::Application.routes.draw do
     end
     
     resources :services, :only => [:index, :create, :destroy]
+    resources :avaliacoes, :only => [:create, :update, :destroy]
     resources :sugestoes, :only => [:create, :destroy] 
   end
   

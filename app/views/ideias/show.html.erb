@@ -24,7 +24,14 @@
         <div class="avatar"><%= image_tag gravatar(sugestao.usuario.email, 48) %></div>
         <div class="commentbody">
           <div class="commenthead">               
-            <%= sugestao.usuario.nome %> - <%=time_ago_in_words(sugestao.created_at)%> atrás 
+            <%= sugestao.usuario.nome %> - <%=time_ago_in_words(sugestao.created_at)%> atrás | 
+            <%= sugestao.media_pontos.to_i %>
+            <%= sugestao.media_pontos == 1 ?  " ponto " : " pontos " %>
+            em 
+            <%= sugestao.conta_avaliacoes == 0 ? "nenhuma " : sugestao.conta_avaliacoes.to_i %>
+            <%= sugestao.conta_avaliacoes == 1 || sugestao.conta_avaliacoes == 0 ? " avaliação " :  " avaliações " %>  |
+            <%= link_to '+', "#" %>&nbsp;&nbsp;<%= link_to '-', "#" %>
+
             <% # display delete link only for sugestoes written by this particular usuario %>
             <% if usuario_signed_in? and sugestao.usuario_id == current_usuario.id %>
               <span><%= link_to 'remover', ideia_sugestao_path(@ideia, sugestao), :confirm => 'Tem certeza?', :method => :delete, :class => "" %></span>

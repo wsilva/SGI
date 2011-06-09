@@ -8,6 +8,7 @@ class Usuario < ActiveRecord::Base
   has_many :services, :dependent => :destroy
   has_many :ideias, :dependent => :destroy
   has_many :sugestoes, :dependent => :destroy
+  has_many :avaliacoes, :dependent => :destroy
 
 
   # Setup accessible (or protected) attributes for your model
