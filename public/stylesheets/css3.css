@@ -91,7 +91,7 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #deviseauth #terms { text-align: center; }
 #deviseauth #terms a { color: #000000; font-weight: bold; }
 #deviseauth #terms a:hover { color: #c81419; }
-#services { padding: 0; margin: 0; height: 90px; }
+#services { padding: 0; margin: 0; height: 100px; }
 #services .services { float: left; text-align: center; text-decoration: none; padding: 5px 15px 0px 10px; }
 #services .services2 { float: left; text-align: center; text-decoration: none; padding: 0px 15px 0px 10px; }
 #services .services img, #services .services2 img { display: block; }
