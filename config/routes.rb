@@ -3,6 +3,17 @@ Sgi::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'services#create'
   
+  resources :admin, :only => [:index] do
+    member do
+      get 'editreject'
+      put 'reject'
+      put 'accept'
+    end
+    collection do
+      get 'ideias'
+    end
+  end
+  
   resources :ideias do
     collection do
       get 'about'

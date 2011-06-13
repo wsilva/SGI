@@ -13,6 +13,9 @@
       <nav id="nav_user">
         <ul>
           <% if usuario_signed_in? %>
+            <% if admin_signed_in? %>
+              <li><%= link_to "admin", edit_usuario_registration_path %></li>          
+            <% end %>
             <li><span id="currentuser">Autenticado como <%= current_usuario.username %></li>
             <li><%= link_to "Seu perfil", edit_usuario_registration_path %></li>
             <li><%= link_to "Suas ideias", minhasideias_ideias_path %></li>

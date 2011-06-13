@@ -1,0 +1,21 @@
+<section id = "admin">
+    <h2>Administração: Dashboard</h2>
+    
+    <h3>Ideias</h3> 
+    <p>
+        Estatísitcas:  <%=pluralize(@num_published, "ideias publicadas")%>, <%= link_to pluralize(@num_status4, "ideia promovida"), ideias_admin_index_path + '?status=4' %>, 
+        <%= link_to pluralize(@num_status3, "ideias publicadas"), ideias_admin_index_path + '?status=3' %>, 
+        <%= link_to pluralize(@num_status2, "ideias rejeitadas"), ideias_admin_index_path + '?status=2' %>, 
+        <%= link_to pluralize(@num_status1, "ideias enviadas"), ideias_admin_index_path + '?status=1' %>, 
+        <%= link_to pluralize(@num_status0, "ideias em rescunho"), ideias_admin_index_path + '?status=0' %>
+        <br />
+        <% if @num_status1 > 0 %>
+            <b><%= link_to pluralize(@num_status1, "ideias enviadas") , ideias_admin_index_path + '?status=1' %> aguardando aprovação!</b>
+        <% end %>
+    </p>
+    
+    <h3>Usuários</h3> 
+    <p>
+        Estatísticas <%=pluralize(@num_usuarios, "usuario") %> total, <%= pluralize(@num_usuarios_active30days, "usuario") %> entraram nos últimos 30 dias.<br />
+        Novos usuários: <%= pluralize(@num_usuarios_created30days, "usuario") %> foram criados nos últimos 30 dias.
+    </p>

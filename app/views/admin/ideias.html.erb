@@ -1,0 +1,16 @@
+<section id = "admin">
+  <h2>Admin: <%= @status_name.capitalize %> Ideias</h2>  
+
+  <% @ideias.each do |ideia| %>
+    <p>
+    <h4><%= link_to ideia.title, ideia %></h4>
+    Author: <%= ideia.user.fullname %> 
+    <%= link_to 'Delete', ideia, :confirm => 'This is admin delete despite of the ideia´s status. Are you sure?', :method => :delete %>
+
+    <% if ideia.status == 1 %> 
+      <%= link_to 'Reject', editreject_admin_path(ideia) %>
+      <%= link_to 'Publish standard', accept_admin_path(ideia, :value => '0'), :method => :put %>
+      <%= link_to 'Publish featured', accept_admin_path(ideia, :value => '1'), :method => :put %>
+    <% end %>
+  </p>
+<% end %>
