@@ -34,7 +34,7 @@ class AdminController < ApplicationController
       when '1' then @status_name = 'enviada'; @order = 'updated_at desc'
       when '2' then @status_name = 'rejeitada'; @order = 'dtrejeicao desc'
       when '3' then @status_name = 'publicada'; @order = 'dtpublicacao desc'
-      when '4' then @status_name = 'promivida'; @order = 'dtpromocao desc'
+      when '4' then @status_name = 'promovida'; @order = 'dtpromocao desc'
     end
   
     @ideias = Ideia.where(:status => @status).order(@order)      

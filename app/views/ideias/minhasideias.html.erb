@@ -41,12 +41,12 @@
     
                 <div class="actions">
                     <span class="show"><%= link_to 'Ver', ideia, :class => "awesome custom red" %></span>
-                    <span class="edit"><%= link_to 'Alterar', edit_ideia_path(ideia), :class => "awesome custom red" %></span>
+                    | <span class="edit"><%= link_to 'Alterar', edit_ideia_path(ideia), :class => "awesome custom red" %></span>
                     <% if (ideia.status == 0) or (ideia.status == 2) %>
-                        <span><%= link_to "Enviar agora", submit_ideia_path(ideia), :method => :put, :class => "awesome custom red" %></span>
+                        | <span><%= link_to "Enviar agora", submit_ideia_path(ideia), :method => :put, :class => "awesome custom red" %></span>
                     <% end %>
                     <% if ideia.status < 3 %>
-                        <span class="delete"><%= link_to 'Remover', ideia, :confirm => 'Tem certeza?', :method => :delete, :class => "awesome custom black" %></span>
+                        | <span class="delete"><%= link_to 'Remover', ideia, :confirm => 'Tem certeza?', :method => :delete, :class => "awesome custom black" %></span>
                     <% end %>
                 </div>
                 

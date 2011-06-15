@@ -13,8 +13,8 @@
       <nav id="nav_user">
         <ul>
           <% if usuario_signed_in? %>
-            <% if admin_signed_in? %>
-              <li><%= link_to "admin", edit_usuario_registration_path %></li>          
+            <% if current_usuario.id==1 %>
+              <li><%= link_to "Administração", "/admin" %></li>
             <% end %>
             <li><span id="currentuser">Autenticado como <%= current_usuario.username %></li>
             <li><%= link_to "Seu perfil", edit_usuario_registration_path %></li>
@@ -41,7 +41,7 @@
         <ul>
           <li>
             <%=  link_to "Últimas Ideias", root_path %>
-            <%#=  link_to "Todas Ideias", todas_ideias_path %>
+<%#=  link_to "Todas Ideias", todas_ideias_path %>
             <%=  link_to "Sobre", about_ideias_path %>
           </li>
         </ul>
@@ -84,16 +84,16 @@
       </section>
 
     </section>
-    
+
     <footer id="page_footer"> 
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
-            <img alt="Creative Commons License" style="border-width:0" src="/images/88x31.png" />
-        </a>
-        <br />
-        Todo o conteúdo sob a licensa: 
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
-            Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
-        </a>.
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="/images/88x31.png" />
+      </a>
+      <br />
+      Todo o conteúdo sob a licensa: 
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+        Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+      </a>.
     </footer>
 
   </body>

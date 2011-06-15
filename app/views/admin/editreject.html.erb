@@ -1,13 +1,13 @@
 <section id = "admin">  
     <h4><%= link_to @ideia.title, @ideia %></h4>
-    Author: <%= @ideia.user.fullname %><br />
-    <%= @ideia.teaser %>
+    Author: <%= @ideia.usuario.fullname %><br />
+    <%= @ideia.texto %>
     <br /><br /><br />
 
     <%= form_for(@ideia, :url => reject_admin_path(@ideia)) do |f| %>
           <% if @ideia.errors.any? %>
                 <div id="error_explanation">
-                    <h2><%= pluralize(@ideia.errors.count, "error") %> prohibited this ideia from being saved:</h2>
+                    <h2><%= pluralize(@ideia.errors.count, "error") %> impediram a gravação da ideia:</h2>
                     <ul>
                         <% @ideia.errors.full_messages.each do |msg| %>
                             <li><%= msg %></li>
@@ -17,12 +17,12 @@
           <% end %>
 
           <div class="field">
-                <label for="ideia_message">Reject message</label><br />
-                <%= f.text_area :message, :size => "100%x10", :class => "fullwidth"  %>
+                <label for="motivo_rejeicao">Motivo da rejeição</label><br />
+                <%= f.text_area :motivo_rejeicao, :size => "100%x10", :class => "fullwidth"  %>
           </div>
 
           <div class="actions">
-                <%= f.submit "Reject Ideia", :class => "awesome custom red" %>
+                <%= f.submit "Rejeitar Ideia", :class => "awesome custom red" %>
           </div>
     <% end %>
 </section>

@@ -47,7 +47,11 @@ class IdeiasController < ApplicationController
     @ideia = Ideia.find(params[:id])
     
     # incrementando visitação
-    @ideia.visitas = @ideia.visitas + 1
+    if @ideia.visitas?
+      @ideia.visitas = @ideia.visitas + 1
+    else
+      @ideia.visitas = 1
+    end
     @ideia.save
     @sugestoes = @ideia.sugestoes.all
 
