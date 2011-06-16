@@ -44,8 +44,11 @@ test:
 
 production:
   adapter: postgresql
+  host: postgresql01.wfsilva.eti.br
+  port: 5432
   encoding: unicode
-  database: sgi_production
+  database: wfsilva2
   pool: 5
-  username: postgres
-  password: 6f145tf
+  username: wfsilva2
+  password: w9vc40TV
+  # schema_search_path: public
